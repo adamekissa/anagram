@@ -1,16 +1,23 @@
-function anagram(string1, string2) {
+function isAnagram(string1, string2) {
     if (string1.length !== string2.length) {
         return false;
     }
+    const string1LCArray = makeSortedLCLettersArray(string1);
+    const string2LCArray = makeSortedLCLettersArray(string2);
+    for (let i = 0; i < string1.length; i++) {
+        if (string1LCArray[i] !== string2LCArray[i]) {
+            return false;
+        }
+    }
+    return true;
+
 }
 
+function makeSortedLCLettersArray(string) {
+    return string.toLowerCase().split("").sort();
+}
 
-export { anagram }
-
-
-
-
-
+export { isAnagram, makeSortedLCLettersArray }
 
 
 // Function anagram (STRING11, STRING2){
